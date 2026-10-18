@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm Sorry ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(-45deg,
+        #ff0066, #7000ff, #00c9ff, #ff00aa);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+    color: white;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.card {
+    width: 90%;
+    max-width: 420px;
+    padding: 40px 25px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,.5);
+    border-radius: 30px;
+    background: rgba(255,255,255,.13);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 40px rgba(255,255,255,.25);
+    animation: appear 1.5s ease;
+    z-index: 2;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: scale(.5) rotate(-5deg); }
+    to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+.heart {
+    font-size: 65px;
+    display: inline-block;
+    animation: heartbeat 1s infinite;
+    filter: drop-shadow(0 0 15px #ffb6e6);
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+h1 {
+    margin: 15px 0;
+    font-size: clamp(35px, 9vw, 48px);
+    text-shadow: 0 0 10px #fff, 0 0 25px #ff44cc;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #fff; }
+    to { text-shadow: 0 0 25px #ffb6f1, 0 0 40px #ff00aa; }
+}
+
+p {
+    font-size: 17px;
+    line-height: 1.8;
+    margin: 12px 0;
+}
+
+button {
+    margin-top: 20px;
+    padding: 14px 27px;
+    border: none;
+    border-radius: 50px;
+    background: white;
+    color: #ff0080;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px #fff;
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background: #ffe0f3;
+}
+
+#response {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.floating {
+    position: absolute;
+    bottom: -50px;
+    animation: floatUp linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: .8; }
+    100% {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 12px white;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: .2; transform: scale(.5); }
+    to { opacity: 1; transform: scale(1.5); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="heart">🥺💗</div>
+
+    <h1>I'm Sorry!</h1>
+
+    <p>
+        I know I made a mistake... 💔<br>
+        But hurting you was never my intention.
+    </p>
+
+    <p>
+        Please thoda sa gussa kam kar do na 🥹<br>
+        Your smile means a lot to me. ✨
+    </p>
+
+    <button onclick="forgive()">Ek baar maaf kar do? 💖</button>
+
+    <div id="response"></div>
+</div>
+
+<script>
+const emojis = ["💗", "💖", "💕", "❤️", "✨", "🌸", "🥹"];
+
+function createFloat() {
+    const item = document.createElement("div");
+    item.className = "floating";
+    item.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+    item.style.left = Math.random() * 100 + "vw";
+    item.style.fontSize = (18 + Math.random() * 25) + "px";
+    item.style.animationDuration = (5 + Math.random() * 6) + "s";
+
+    document.body.appendChild(item);
+
+    setTimeout(() => item.remove(), 11000);
+}
+
+setInterval(createFloat, 300);
+
+for (let i = 0; i < 35; i++) {
+    const star = document.createElement("div");
+    star.className = "sparkle";
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.animationDelay = Math.random() * 2 + "s";
+    document.body.appendChild(star);
+}
+
+function forgive() {
+    document.getElementById("response").innerHTML =
+        "Yayyy! 🥹💖<br>Thank you meri jaan! 🫶🏻🌸";
+
+    document.querySelector(".heart").textContent = "🥰💞";
+
+    document.querySelector("h1").textContent = "Thank You!";
+
+    document.querySelector("p").innerHTML =
+        "Ab ek pyari si smile de do! 😊💕";
+
+    document.querySelector("button").textContent =
+        "Sending you a big hug! 🤗❤️";
+}
+</script>
+
+</body>
+</html>
